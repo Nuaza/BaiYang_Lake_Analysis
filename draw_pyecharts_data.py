@@ -13,7 +13,7 @@ path = './webView/templates/resources/'
 
 # 仅限draw_pyecharts_data.py文件使用，外部文件引用可能会报错
 def get_original_data():
-    return get_dataset('./data/手工合并.xlsx')
+    return get_dataset('./data/example.xlsx')
 
 
 # 根据频繁项集绘制柱状图
@@ -284,11 +284,11 @@ def draw_line_of_O2_from_extra(path):
 
 # 根据手工数据的高锰酸盐的值绘制折线图
 def draw_line_of_MnO2(path):
-    nlz_data = get_dataset('./data/sghb.xlsx').iloc[0:18, :]
-    gdzz_data = get_dataset('./data/sghb.xlsx').iloc[18:36, :]
-    scd_data = get_dataset('./data/sghb.xlsx').iloc[36:54, :]
-    qt_data = get_dataset('./data/sghb.xlsx').iloc[54:72, :]
-    cpt_data = get_dataset('./data/sghb.xlsx').iloc[72:90, :]
+    nlz_data = get_dataset('./data/example.xlsx').iloc[0:18, :]
+    gdzz_data = get_dataset('./data/example.xlsx').iloc[18:36, :]
+    scd_data = get_dataset('./data/example.xlsx').iloc[36:54, :]
+    qt_data = get_dataset('./data/example.xlsx').iloc[54:72, :]
+    cpt_data = get_dataset('./data/example.xlsx').iloc[72:90, :]
     x_data = nlz_data.iloc[:, 3].tolist()
     c = (
         Line()
@@ -327,11 +327,11 @@ def draw_line_of_MnO2(path):
 
 # 根据手工数据的COD的值绘制折线图
 def draw_line_of_COD(path):
-    nlz_data = get_dataset('./data/sghb.xlsx').iloc[0:18, :]
-    gdzz_data = get_dataset('./data/sghb.xlsx').iloc[18:36, :]
-    scd_data = get_dataset('./data/sghb.xlsx').iloc[36:54, :]
-    qt_data = get_dataset('./data/sghb.xlsx').iloc[54:72, :]
-    cpt_data = get_dataset('./data/sghb.xlsx').iloc[72:90, :]
+    nlz_data = get_dataset('./data/example.xlsx').iloc[0:18, :]
+    gdzz_data = get_dataset('./data/example.xlsx').iloc[18:36, :]
+    scd_data = get_dataset('./data/example.xlsx').iloc[36:54, :]
+    qt_data = get_dataset('./data/example.xlsx').iloc[54:72, :]
+    cpt_data = get_dataset('./data/example.xlsx').iloc[72:90, :]
     x_data = nlz_data.iloc[:, 3].tolist()
     c = (
         Line()
@@ -370,11 +370,11 @@ def draw_line_of_COD(path):
 
 # 根据手工数据的BOD₅的值绘制折线图
 def draw_line_of_BOD(path):
-    nlz_data = get_dataset('./data/sghb.xlsx').iloc[0:18, :]
-    gdzz_data = get_dataset('./data/sghb.xlsx').iloc[18:36, :]
-    scd_data = get_dataset('./data/sghb.xlsx').iloc[36:54, :]
-    qt_data = get_dataset('./data/sghb.xlsx').iloc[54:72, :]
-    cpt_data = get_dataset('./data/sghb.xlsx').iloc[72:90, :]
+    nlz_data = get_dataset('./data/example.xlsx').iloc[0:18, :]
+    gdzz_data = get_dataset('./data/example.xlsx').iloc[18:36, :]
+    scd_data = get_dataset('./data/example.xlsx').iloc[36:54, :]
+    qt_data = get_dataset('./data/example.xlsx').iloc[54:72, :]
+    cpt_data = get_dataset('./data/example.xlsx').iloc[72:90, :]
     x_data = nlz_data.iloc[:, 3].tolist()
     c = (
         Line()
@@ -413,11 +413,11 @@ def draw_line_of_BOD(path):
 
 # 根据手工数据的氨氮的值绘制折线图
 def draw_line_of_NH3(path):
-    nlz_data = get_dataset('./data/sghb.xlsx').iloc[0:18, :]
-    gdzz_data = get_dataset('./data/sghb.xlsx').iloc[18:36, :]
-    scd_data = get_dataset('./data/sghb.xlsx').iloc[36:54, :]
-    qt_data = get_dataset('./data/sghb.xlsx').iloc[54:72, :]
-    cpt_data = get_dataset('./data/sghb.xlsx').iloc[72:90, :]
+    nlz_data = get_dataset('./data/example.xlsx').iloc[0:18, :]
+    gdzz_data = get_dataset('./data/example.xlsx').iloc[18:36, :]
+    scd_data = get_dataset('./data/example.xlsx').iloc[36:54, :]
+    qt_data = get_dataset('./data/example.xlsx').iloc[54:72, :]
+    cpt_data = get_dataset('./data/example.xlsx').iloc[72:90, :]
     x_data = nlz_data.iloc[:, 3].tolist()
     c = (
         Line()
@@ -456,11 +456,11 @@ def draw_line_of_NH3(path):
 
 # 根据手工数据的总磷的值绘制折线图
 def draw_line_of_P(path):
-    nlz_data = get_dataset('./data/sghb.xlsx').iloc[0:18, :]
-    gdzz_data = get_dataset('./data/sghb.xlsx').iloc[18:36, :]
-    scd_data = get_dataset('./data/sghb.xlsx').iloc[36:54, :]
-    qt_data = get_dataset('./data/sghb.xlsx').iloc[54:72, :]
-    cpt_data = get_dataset('./data/sghb.xlsx').iloc[72:90, :]
+    nlz_data = get_dataset('./data/example.xlsx').iloc[0:18, :]
+    gdzz_data = get_dataset('./data/example.xlsx').iloc[18:36, :]
+    scd_data = get_dataset('./data/example.xlsx').iloc[36:54, :]
+    qt_data = get_dataset('./data/example.xlsx').iloc[54:72, :]
+    cpt_data = get_dataset('./data/example.xlsx').iloc[72:90, :]
     x_data = nlz_data.iloc[:, 3].tolist()
     c = (
         Line()
@@ -499,11 +499,11 @@ def draw_line_of_P(path):
 
 # 根据手工数据的总氮的值绘制折线图
 def draw_line_of_N(path):
-    nlz_data = get_dataset('./data/sghb.xlsx').iloc[0:18, :]
-    gdzz_data = get_dataset('./data/sghb.xlsx').iloc[18:36, :]
-    scd_data = get_dataset('./data/sghb.xlsx').iloc[36:54, :]
-    qt_data = get_dataset('./data/sghb.xlsx').iloc[54:72, :]
-    cpt_data = get_dataset('./data/sghb.xlsx').iloc[72:90, :]
+    nlz_data = get_dataset('./data/example.xlsx').iloc[0:18, :]
+    gdzz_data = get_dataset('./data/example.xlsx').iloc[18:36, :]
+    scd_data = get_dataset('./data/example.xlsx').iloc[36:54, :]
+    qt_data = get_dataset('./data/example.xlsx').iloc[54:72, :]
+    cpt_data = get_dataset('./data/example.xlsx').iloc[72:90, :]
     x_data = nlz_data.iloc[:, 3].tolist()
     c = (
         Line()
@@ -538,15 +538,3 @@ def draw_line_of_N(path):
         )
             .render(path)
     )
-
-
-# 仅测试用
-if __name__ == '__main__':
-    draw_line_of_pH_from_extra("./webView/templates/resources/line_of_pH.html")
-    draw_line_of_temperature_from_extra("./webView/templates/resources/line_of_temperature.html")
-    draw_line_of_O2_from_extra("./webView/templates/resources/line_of_O2.html")
-    draw_line_of_MnO2("./webView/templates/resources/line_of_MnO2.html")
-    draw_line_of_COD("./webView/templates/resources/line_of_COD.html")
-    draw_line_of_BOD("./webView/templates/resources/line_of_BOD.html")
-    draw_line_of_NH3("./webView/templates/resources/line_of_NH3.html")
-    draw_line_of_P("./webView/templates/resources/line_of_P.html")

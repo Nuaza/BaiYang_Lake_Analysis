@@ -12,7 +12,7 @@ path = './webView/templates/resources/'
 
 
 def get_original_data():
-    return get_dataset('./data/手工合并.xlsx')
+    return get_dataset('./data/example.xlsx')
 
 
 # 根据频繁项集绘制柱状图
