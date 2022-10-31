@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Bootstrap的CSS文件-->
+    <link rel="stylesheet" href="/static/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/static/images/icons/bootstrap.svg">
+    <title>白洋淀生态监测数据可视化系统</title>
+    <script src="/static/plugins/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+    <script src="/static/plugins/popper.js-1.16.1/dist/umd/popper.min.js"></script>
+    <script src="/static/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+    <style>
+        html, body{height: 100%;}
+        p{text-indent: 2em;}
+    </style>
+</head>
+<body>
+    {% load static %}
+
+    {% if not user %}
+    {% include "./login.html" %}
+    {% else %}
+    <div class="container-fluid h-100">
+        {% include "index/index_menu.html" %}
+        <div class="row h-100">
+            <!--左侧导航栏-->
+            <div class="col-2 mt-3 border-right">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">欢迎页面</a>
+                    <a class="nav-link" id="v-pills-byd-tab" data-toggle="pill" href="#v-pills-byd" role="tab" aria-controls="v-pills-byd" aria-selected="false">关于白洋淀</a>
+                    <a class="nav-link" id="v-pills-associationanalyze-tab" data-toggle="pill" href="#v-pills-associationanalyze" role="tab" aria-controls="v-pills-associationanalyze" aria-selected="false">关于关联分析</a>
+                    <a class="nav-link" id="v-pills-visiblesystem-tab" data-toggle="pill" href="#v-pills-visiblesystem" role="tab" aria-controls="v-pills-visiblesystem" aria-selected="false">关于可视化系统</a>
+                </div>
+            </div>
+            <!--右侧正文栏-->
+            <div class="col-8 pt-5 pl-5">
+                <!--正文内容-->
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <h1>简介</h1>
+                        <p class="lead mt-3">{{article1}}</p>
+                        <h3 class="mt-4">研究背景</h3>
+                        <p class="mt-3">{{article2}}</p>
+                        <p class="mt-3">{{article3}}</p>
+                        <h3 class="mt-4">研究意义</h3>
+                        <p class="mt-3">{{article4}}</p>
+                    </div>
+                    <div class="tab-pane fade overflow-auto" id="v-pills-byd" role="tabpanel" aria-labelledby="v-pills-byd-tab">
+                        <h1>关于白洋淀</h1>
+                        <p class="lead mt-3">{{article5}}</p>
+                        <h3 class="mt-4">地理位置</h3>
+                        <div class="float-right border border-primary mt-3" style="width: 600px; height: 450px">{% include "resources/map3.html" %}</div>
+                        <p class="mt-3">{{article6}}</p>
+                        <p class="mt-3">{{article7}}</p>
+                        <p class="mt-3">{{article8}}</p>
+                        </div>
+                    <div class="tab-pane fade" id="v-pills-associationanalyze" role="tabpanel" aria-labelledby="v-pills-associationanalyze-tab">
+                        <h1>关于关联分析</h1>
+                        <p class="lead mt-3">关联分析又称为关联挖掘，即发现存在于大量数据集中的关联性或相关性，从而描述一个事物中某些属性同时出现的规律和模式</p>
+                        <h3 class="mt-4">大数据</h3>
+                        <p class="mt-3">{{article9}}</p>
+                        <p class="mt-3">{{article10}}</p>
+                        <h3 class="mt-4">数据挖掘</h3>
+                        <p class="mt-3">{{article11}}</p>
+                        <p class="mt-3">{{article12}}</p>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-visiblesystem" role="tabpanel" aria-labelledby="v-pills-visiblesystem-tab">
+                        <h1>关于可视化系统</h1>
+                        <p class="lead mt-3">本次可视化系统的所有可互动式图表均采用Echarts技术，使用Pyecharts模块作为绘制工具来进行绘制。</p>
+                        <h3 class="mt-4">Echarts</h3>
+                        <p class="mt-3">Echarts是一款基于JavaScript的数据可视化图表库，其能够提供直观、生动且可互动的数据可视化图表。如下图所示：</p>
+                        <p>{% include "resources/example1.html" %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
+<script>
+
+</script>

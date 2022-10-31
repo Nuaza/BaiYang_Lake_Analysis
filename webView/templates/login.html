@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/static/images/icons/bootstrap.svg">
+    <title>登陆界面</title>
+    <script src="/static/plugins/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+    <script src="/static/plugins/popper.js-1.16.1/dist/umd/popper.min.js"></script>
+    <script src="/static/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+    <style>
+        html, body{height: 100%; background-image: url("/static/images/background.jpg"); background-size: 100%;}
+        p{text-indent: 2em;}
+        #accordionExample{transform: translateY(25%); height: 390px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="accordion float-right col-sm-5" id="accordionExample" style="opacity: 0.9">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            登录已有账号
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <!--登录表单-->
+                        <form class="form" action="login" method="post">
+                            {% csrf_token %}
+                            <h3>登录</h3>
+                            <div class="form-group">
+                                <label for="username">用户名</label>
+                                <input class="form-control" type="text" id="username" name="username" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">密码</label>
+                                <input class="form-control" type="password" id="password" name="password" required/>
+                            </div>
+                            <button type="submit" class="btn btn-primary">提交登录</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            未拥有账号？注册
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <form class="form" action="register" method="POST">
+                            <h3>注册</h3>
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="register_username">用户名</label>
+                                <input class="form-control" type="text" name="username" id="register_username" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_email">邮箱</label>
+                                <input class="form-control" type="text" name="email" id="register_email" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_password">密码</label>
+                                <input class="form-control" type="password" name="password" id="register_password" required/>
+                            </div>
+                            <button type="submit" class="btn btn-primary">提交注册</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

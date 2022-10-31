@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Bootstrap的CSS文件-->
+    <link rel="stylesheet" href="/static/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/static/images/icons/bootstrap.svg">
+    <title>白洋淀生态监测数据可视化系统</title>
+    <script src="/static/plugins/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+    <script src="/static/plugins/popper.js-1.16.1/dist/umd/popper.min.js"></script>
+    <script src="/static/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+    <style>
+        html, body{height: 100%;}
+        p{text-indent: 2em;}
+    </style>
+</head>
+<body>
+    {% load static %}
+    {% if not user %}
+    {% include "./../login.html" %}
+    {% else %}
+    <div class="container-fluid h-100">
+        {% include "data/data_menu.html" %}
+        <div class="row h-100">
+            <!--左侧导航栏-->
+            <div class="col-2 mt-3 border-right">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-itemsets-tab" data-toggle="pill" href="#v-pills-itemsets" role="tab" aria-controls="v-pills-itemsets" aria-selected="true">频繁项集</a>
+                    <a class="nav-link" id="v-pills-rules-tab" data-toggle="pill" href="#v-pills-rules" role="tab" aria-controls="v-pills-rules" aria-selected="false">关联规则</a>
+                    <a class="nav-link" id="v-pills-analyze-tab" data-toggle="pill" href="#v-pills-analyze" role="tab" aria-controls="v-pills-analyze" aria-selected="false">结果分析</a>
+                </div>
+            </div>
+            <!--右侧正文栏-->
+            <div class="col-10 pt-5 pl-5">
+                <!--正文内容-->
+                <div class="tab-content" id="v-pills-tabContent">
+                    <!--上侧导航栏-->
+                    <div class="tab-pane fade show active" id="v-pills-itemsets" role="tabpanel" aria-labelledby="v-pills-itemsets-tab">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="pills-table-tab" data-toggle="pill" href="#pills-table" role="tab" aria-controls="pills-table" aria-selected="true">数据表格</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-bar-tab" data-toggle="pill" href="#pills-bar" role="tab" aria-controls="pills-bar" aria-selected="false">频繁项集柱状图</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-data-graph-tab" data-toggle="pill" href="#pills-data-graph" role="tab" aria-controls="pills-data-graph" aria-selected="false">频繁项集关系图</a>
+                            </li>
+                            <li class="ml-5" >
+                                <!--Modal Trigger-->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFile">上传数据</button>
+                            </li>
+                        </ul>
+                        <!--Modal-->
+                        {% include "./../modal.html" %}
+                        <!--下侧正文-->
+                        <div class="tab-content mr-5" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-table" role="tabpanel" aria-labelledby="pills-table-tab">
+                                {% include "./table1.html" %}
+                            </div>
+                            <div class="tab-pane fade" id="pills-bar" role="tabpanel" aria-labelledby="pills-bar-tab">
+                                {% include "resources/bar_of_data_frequent_itemsets.html" %}
+                            </div>
+                            <div class="tab-pane fade" id="pills-data-graph" role="tabpanel" aria-labelledby="pills-data-graph-tab">
+                                {% include "resources/graph_of_data_itemsets.html" %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-rules" role="tabpanel" aria-labelledby="v-pills-rules-tab">
+                        <div class="tab-pane fade show active" id="v-pills-assrules" role="tabpanel" aria-labelledby="v-pills-itemsets-tab">
+                            <ul class="nav nav-pills mb-3" id="pills-tab2" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="pills-table2-tab" data-toggle="pill" href="#pills-table2" role="tab" aria-controls="pills-table2" aria-selected="true">数据表格</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-parallel-tab" data-toggle="pill" href="#pills-parallel" role="tab" aria-controls="pills-parallel" aria-selected="true">关联规则平行坐标图</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-graph-tab" data-toggle="pill" href="#pills-graph" role="tab" aria-controls="pills-graph" aria-selected="false">关联规则关系图</a>
+                                </li>
+                            </ul>
+                            <!--下侧正文-->
+                            <div class="tab-content mr-5" id="pills-tabContent2">
+                                <div class="tab-pane fade show active" id="pills-table2" role="tabpanel" aria-labelledby="pills-table2-tab">
+                                    {% include "./table2.html" %}
+                                </div>
+                                <div class="tab-pane fade" id="pills-parallel" role="tabpanel" aria-labelledby="pills-parallel-tab">
+                                    {% include "resources/parallel_of_data_rules.html" %}
+                                </div>
+                                <div class="tab-pane fade" id="pills-graph" role="tabpanel" aria-labelledby="pills-graph-tab">
+                                    {% include "resources/graph_of_data_rules.html" %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-analyze" role="tabpanel" aria-labelledby="v-pills-analyze-tab">
+                        <div class="tab-pane fade show active" id="v-pills-resultanalyze" role="tabpanel" aria-labelledby="v-pills-itemsets-tab">
+                            <ul class="nav nav-pills mb-3" id="pills-tab3" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="pills-predict-tab" data-toggle="pill" href="#pills-predict" role="tab" aria-controls="pills-predict" aria-selected="true">生态变化趋势预测</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-warn-tab" data-toggle="pill" href="#pills-warn" role="tab" aria-controls="pills-warn" aria-selected="true">生态环境威胁警示</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-suggest-tab" href="suggestion" role="tab" aria-controls="pills-suggest" aria-selected="true">未来生态发展建议</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content mr-5" id="pills-tabContent3">
+                                <div class="tab-pane fade show active" id="pills-predict" role="tabpanel" aria-labelledby="pills-predict-tab">
+                                    {% include "./predict.html" %}
+                                </div>
+                                <div class="tab-pane fade" id="pills-warn" role="tabpanel" aria-labelledby="pills-warn-tab">
+                                    {% include "./warning.html" %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</body>
+<script>
+</script>
+</html>
+<script>
+
+</script>

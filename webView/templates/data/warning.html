@@ -1,0 +1,27 @@
+{% load my_tags %}
+<ul class="list-group">
+    <li class="list-group-item list-group-item-danger">根据关联规则，对白洋淀生态目前所面临的危险分析如下：</li>
+    {% for association_rule in association_rules %}
+        {% if association_rule.3 > 0.2 %}
+            <li class="list-group-item list-group-item-action">
+            由于水质中占比约为<span class="text-danger">{{association_rule.3|x100}}%</span>的
+            <span class="text-danger">{{association_rule.1}} </span>含量的过量，已经导致
+            <span class="text-danger">{{association_rule.2}} </span>含量的超标，且占比已经达到了
+            <span class="text-danger">{{association_rule.4|x100}}%</span>
+            {% if association_rule.2|split:0 == "高锰酸盐" or association_rule.2|split:0 == "COD" or association_rule.2|split:0 == "BOD" %}
+                <br>
+                <span class="text-danger">这表明水体受需氧性化学污染物（如有机物、亚硝酸盐、硫化物等还原性物质）威胁的概率将会升高，并导致水体处理污水能力急剧下降</span>
+            {% elif association_rule.2|split:0 == "氨氮" or association_rule.2|split:0 == "总氮" or association_rule.2|split:0 == "总磷" %}
+                <br>
+                <span class="text-danger">这表明水体受营养物质污染物威胁的概率将会升高，并导致水体富营养化程度加剧</span>
+            {% elif association_rule.2|split:0 == "粪大肠菌群" %}
+                <br>
+                <span class="text-danger">这表明水体受粪便污染物威胁的概率将会升高，并对饮用了水体的人群健康产生威胁</span>
+            {% else %}
+                <br>
+                <span class="text-danger">这表明水体受{{association_rule.2|split:0}}污染物威胁的概率将会升高，并对水体中的生物以及附近的居民健康造成威胁</span>
+            {% endif %}
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>

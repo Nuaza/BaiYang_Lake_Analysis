@@ -1,0 +1,29 @@
+{% load my_tags %}
+<ul class="list-group">
+    <li class="list-group-item list-group-item-warning">根据关联规则，对白洋淀监测数据中各水质标准的数据面临的瓶颈分析如下：</li>
+    {% for association_rule in association_rules %}
+        {% if association_rule.2 == "Ⅳ类" or association_rule.2 == "Ⅴ类" or association_rule.2 == "劣Ⅴ类" %}
+            <li class="list-group-item list-group-item-action">
+            {% if association_rule.3 >= 0.4 %}
+                由于水质中占比约达<span class="text-danger"> {{association_rule.3|x100}}%</span>
+            {% elif association_rule.3 > 0.1 and association_rule.3 < 0.4 %}
+                由于水质中占比约为<span class="text-warning"> {{association_rule.3|x100}}%</span>
+            {% else %}
+                由于水质中占比仅为<span class="text-success"> {{association_rule.3|x100}}%</span>
+            {% endif %}
+            {% if association_rule.1 == "溶解氧" %}
+                的<span class="text-danger">溶解氧</span>含量的不足，导致了该部分水体数据
+            {% else %}
+                的<span class="text-danger"> {{association_rule.1}}</span>含量的过量，导致了该部分水体数据
+            {% endif %}
+            {% if association_rule.2 == "劣Ⅴ类" %}
+                连<span class="text-danger"> Ⅴ类 </span>水质标准都无法达到
+            {% elif association_rule.2 == "Ⅴ类" %}
+                只能达到<span class="text-danger"> Ⅴ类 </span>水质标准
+            {% else %}
+                达到<span class="text-warning"> Ⅳ类 </span>水质标准
+            {% endif %}
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>

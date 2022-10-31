@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=B8DdZoQ1H1zXnblRt0aG1614Om1zw3f9"></script>
+    <!--Bootstrap的CSS文件-->
+    <link rel="stylesheet" href="/static/plugins/bootstrap-4.6.1-dist/css/bootstrap.css">
+    <link rel="shortcut icon" href="/static/images/icons/bootstrap.svg">
+    <style type="text/css">
+		#l-map{height:500px;width:600px}
+</style>
+</head>
+<body>
+    <div id="l-map"></div>
+</body>
+</html>
+<script type="text/javascript">
+// 百度地图API功能
+var map = new BMap.Map("l-map");
+map.en
+var point = new BMap.Point(115.792385,39.000802);
+var opts1 = {
+	    width : 200,     // 信息窗口宽度
+	    height: 100,     // 信息窗口高度
+	    title : "南刘庄" , // 信息窗口标题
+	}
+	var opts2 = {
+	    width : 200,     // 信息窗口宽度
+	    height: 100,     // 信息窗口高度
+	    title : "烧车淀" , // 信息窗口标题
+	}
+	var opts3 = {
+	    width : 200,     // 信息窗口宽度
+	    height: 100,     // 信息窗口高度
+	    title : "圈头" , // 信息窗口标题
+	}
+	var opts4 = {
+	    width : 200,     // 信息窗口宽度
+	    height: 100,     // 信息窗口高度
+	    title : "采蒲台" , // 信息窗口标题
+	}
+	var opts5 = {
+	    width : 200,     // 信息窗口宽度
+	    height: 100,     // 信息窗口高度
+	    title : "光淀张庄" , // 信息窗口标题
+	}
+	var opts6 = {
+	    width : 200,     // 信息窗口宽度
+	    height: 100,     // 信息窗口高度
+	    title : "枣林庄" , // 信息窗口标题
+	}
+	var opts7 = {
+	    width : 200,     // 信息窗口宽度
+	    height: 100,     // 信息窗口高度
+	    title : "端村" , // 信息窗口标题
+	}
+	var opts8 = {
+	    width : 200,     // 信息窗口宽度
+	    height: 100,     // 信息窗口高度
+	    title : "鸪丁淀" , // 信息窗口标题
+	}
+var address;
+map.centerAndZoom(point,12);
+map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+
+var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+	{"location" : map
+});
+
+ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+var str = "";
+	var _value = e.fromitem.value;
+	var value = "";
+	if (e.fromitem.index > -1) {
+		value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+	}
+	str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+	value = "";
+	if (e.toitem.index > -1) {
+		_value = e.toitem.value;
+		value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+	}
+	str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+	G("searchResultPanel").innerHTML = str;
+});
+
+var myValue;
+ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+var _value = e.item.value;
+	myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+	G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+
+	setPlace();
+});
+
+function setPlace(){
+	map.clearOverlays();    //清除地图上所有覆盖物
+	function myFun(){
+		var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+		map.centerAndZoom(pp, 12);
+		map.addOverlay(new BMap.Marker(pp));    //添加标注
+	}
+	var local = new BMap.LocalSearch(map, { //智能搜索
+	  onSearchComplete: myFun
+	});
+	local.search(myValue);
+}
+	// 百度地图API功能
+var marker1 = new BMap.Marker(new BMap.Point(115.9458, 38.9037));
+var marker2 = new BMap.Marker(new BMap.Point(115.9999, 38.9420));
+var marker3 = new BMap.Marker(new BMap.Point(116.0307, 38.8625));
+var marker4 = new BMap.Marker(new BMap.Point(116.0100, 38.8269));
+var marker5 = new BMap.Marker(new BMap.Point(116.0302, 38.9004));
+var marker6 = new BMap.Marker(new BMap.Point(116.0896, 38.8972));
+var marker7 = new BMap.Marker(new BMap.Point(115.9500, 38.8500));
+var marker8 = new BMap.Marker(new BMap.Point(115.8442, 38.9174));
+map.addOverlay(marker1);
+map.addOverlay(marker2);
+map.addOverlay(marker3);
+map.addOverlay(marker4);
+map.addOverlay(marker5);
+map.addOverlay(marker6);
+map.addOverlay(marker7);
+map.addOverlay(marker8);
+marker1.addEventListener("click", function(){
+    map.openInfoWindow(new BMap.InfoWindow("经度:115.9458，纬度:38.9037", opts1),
+            new BMap.Point(115.9458, 38.9037)); //开启信息窗口
+});
+marker2.addEventListener("click", function(){
+    map.openInfoWindow(new BMap.InfoWindow("经度:115.9999，纬度:38.9420", opts2),
+            new BMap.Point(115.9999, 38.9420)); //开启信息窗口
+});
+marker3.addEventListener("click", function(){
+    map.openInfoWindow(new BMap.InfoWindow("经度:116.0307，纬度:38.8625", opts3),
+            new BMap.Point(116.0307, 38.8625)); //开启信息窗口
+});
+marker4.addEventListener("click", function(){
+    map.openInfoWindow(new BMap.InfoWindow("经度:116.0100，纬度:38.8269", opts4),
+            new BMap.Point(116.0100, 38.8269)); //开启信息窗口
+});
+marker5.addEventListener("click", function(){
+    map.openInfoWindow(new BMap.InfoWindow("经度:116.0302，纬度:38.9004", opts5),
+            new BMap.Point(116.0302, 38.9004)); //开启信息窗口
+});
+marker6.addEventListener("click", function(){
+    map.openInfoWindow(new BMap.InfoWindow("经度:116.0896，纬度:38.8972", opts6),
+            new BMap.Point(116.0896, 38.8972)); //开启信息窗口
+});
+marker7.addEventListener("click", function(){
+    map.openInfoWindow(new BMap.InfoWindow("经度:115.9500，纬度:38.8500", opts7),
+            new BMap.Point(115.9500, 38.8500)); //开启信息窗口
+});
+marker8.addEventListener("click", function(){
+    map.openInfoWindow(new BMap.InfoWindow("经度:115.8442，纬度:38.9174", opts8),
+            new BMap.Point(115.8442, 38.9174)); //开启信息窗口
+});
+</script>

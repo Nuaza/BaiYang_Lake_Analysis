@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;}
+	</style>
+	<script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=B8DdZoQ1H1zXnblRt0aG1614Om1zw3f9"></script>
+	<title>视角动画</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+    // GL版命名空间为BMapGL
+    // 按住鼠标右键，修改倾斜角和角度
+	var bmap = new BMapGL.Map("allmap");    // 创建Map实例
+    var longitude = 115.992385;
+    var latitude = 38.856802;
+    var marker1 = new BMapGL.Marker(new BMapGL.Point(115.9458, 38.9037));
+	var marker2 = new BMapGL.Marker(new BMapGL.Point(115.9999, 38.9420));
+	var marker3 = new BMapGL.Marker(new BMapGL.Point(116.0307, 38.8625));
+	var marker4 = new BMapGL.Marker(new BMapGL.Point(116.0100, 38.8269));
+	var marker5 = new BMapGL.Marker(new BMapGL.Point(116.0302, 38.9004));
+	bmap.centerAndZoom(new BMapGL.Point(longitude,latitude), 12);  // 初始化地图,设置中心点坐标和地图级别
+    bmap.enableScrollWheelZoom(true);     // 开启鼠标滚轮缩放
+    bmap.setTilt(45);      // 设置地图初始倾斜角
+    // 定义关键帧
+    var keyFrames = [
+        {
+            center: new BMapGL.Point(longitude,latitude),
+            zoom:12,
+            tilt: 45,
+            heading: 0,
+            percentage: 0
+        },
+        {
+            center: new BMapGL.Point(longitude,latitude),
+            zoom:12,
+            tilt: 45,
+            heading: 90,
+            percentage: 0.25
+        },
+        {
+            center: new BMapGL.Point(longitude,latitude),
+            zoom:12,
+            tilt: 45,
+            heading: 180,
+            percentage: 0.5
+        },
+        {
+            center: new BMapGL.Point(longitude,latitude),
+            zoom:12,
+            tilt: 45,
+            heading: 270,
+            percentage: 0.75
+        },
+        {
+            center: new BMapGL.Point(longitude,latitude),
+            zoom:12,
+            tilt: 45,
+            heading: 360,
+            percentage: 1.00
+        },
+    ];
+
+    var opts = {
+        duration: 20000,
+        delay: 3000,
+        interation: 'INFINITE'
+    };
+
+    // 声明动画对象
+    var animation = new BMapGL.ViewAnimation(keyFrames, opts);
+    // 监听事件
+    animation.addEventListener('animationstart', function(e){console.log('start')});
+    animation.addEventListener('animationiterations', function(e){console.log('onanimationiterations')});
+    animation.addEventListener('animationend', function(e){console.log('end')});
+    // 开始播放动画
+    setTimeout('bmap.startViewAnimation(animation)', 00);
+</script>

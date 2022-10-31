@@ -1,0 +1,30 @@
+<table class="table table-striped text-center table-bordered table-hover">
+    <thead class="thead-light">
+        <th scope="col">#</th>
+        <th scope="col">规则先导项</th>
+        <th scope="col">规则后继项</th>
+        <th scope="col">先导项支持度</th>
+        <th scope="col">后继项支持度</th>
+        <th scope="col">支持度</th>
+        <th scope="col">置信度</th>
+        <th scope="col">提升度</th>
+        <th scope="col">杠杆率</th>
+        <th scope="col">确信度</th>
+    </thead>
+    <tbody>
+        {% for association_rule in association_rules %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{association_rule.1}}</td>
+                <td>{{association_rule.2}}</td>
+                <td>{{association_rule.3}}</td>
+                <td>{{association_rule.4}}</td>
+                <td>{{association_rule.5}}</td>
+                <td>{{association_rule.6}}</td>
+                <td>{{association_rule.7}}</td>
+                <td>{{association_rule.8}}</td>
+                <td>{{association_rule.9}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

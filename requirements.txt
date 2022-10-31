@@ -1,0 +1,14 @@
+# Usage: pip install -r requirements.txt
+
+# Base ----------------------------------------
+numpy>=1.23.1
+pandas>=1.5.0
+pyecharts>=1.9.1
+scikit-learn>=1.1.2
+scipy>=1.9.1
+mlxtend>=0.21.0
+pymysql>=1.0.2
+django==4.0.4
+xlrd==1.2.0
+
+

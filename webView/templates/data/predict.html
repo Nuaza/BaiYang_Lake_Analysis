@@ -1,0 +1,31 @@
+{% load my_tags %}
+<ul class="list-group">
+    <li class="list-group-item list-group-item-primary">根据关联规则，对白洋淀生态水质变化的预测如下：</li>
+    {% for association_rule in association_rules %}
+        <li class="list-group-item list-group-item-action">
+            {% if association_rule.6 == 1.0 %}
+                有<span class="text-success">100.0%</span>的概率可以相信，
+            {% elif association_rule.6 > 0.6 and association_rule.6 < 1.0 %}
+                有<span class="text-warning">{{association_rule.6|x100}}%</span>的概率可以相信，
+            {% else %}
+                仅有<span class="text-danger">{{association_rule.6|x100}}%</span>的概率可以相信，
+            {% endif %}
+            当监测数据中<span class="text-info">{{association_rule.1}}</span>成分超出一定标准时，会在一定程度上造成平均
+            {% if association_rule.7 >= 3 %}
+                <span class="text-danger">{{association_rule.7}}</span>
+            {% elif association_rule.7 >= 1.5 and association_rule.7 < 3 %}
+                <span class="text-warning">{{association_rule.7}}</span>
+            {% else %}
+                <span class="text-success">{{association_rule.7}}</span>
+            {% endif %}
+            份<span class="text-info">{{association_rule.2}}</span>含量的升高，
+            {% if association_rule.5 >= 0.4 %}
+                且这种情况发生的可能性高达<span class="text-danger">{{association_rule.5|x100}}%</span>
+            {% elif association_rule.5 > 0.2 and association_rule.5 < 0.4 %}
+                且这种情况发生的可能性为<span class="text-warning">{{association_rule.5|x100}}%</span>
+            {% else %}
+                不过这种情况发生的可能性仅为<span class="text-success">{{association_rule.5|x100}}%</span>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

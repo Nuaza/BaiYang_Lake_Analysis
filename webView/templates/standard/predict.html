@@ -1,0 +1,57 @@
+{% load my_tags %}
+<ul class="list-group">
+    <li class="list-group-item list-group-item-primary">根据关联规则，对白洋淀监测数据中类属于不同水质标准的数据分析如下：</li>
+    {% for association_rule in association_rules %}
+        {% if association_rule.2 == "Ⅲ类" or association_rule.2 == "Ⅳ类" or association_rule.2 == "Ⅴ类" or association_rule.2 == "劣Ⅴ类" %}
+            <li class="list-group-item list-group-item-action">
+                {% if association_rule.6 >= 0.5 %}
+                    有<span class="text-success">{{association_rule.6|x100}}%</span>的概率可以相信，
+                {% elif association_rule.6 > 0.2 and association_rule.6 < 0.5 %}
+                    有<span class="text-warning">{{association_rule.6|x100}}%</span>的概率可以相信，
+                {% else %}
+                    仅有<span class="text-danger">{{association_rule.6|x100}}%</span>的概率可以相信，
+                {% endif %}
+                在占比约为
+                {% if association_rule.4 >= 0.4 %}
+                    <span class="text-success">{{association_rule.4|x100}}%</span>
+                {% elif association_rule.4 > 0.2 and association_rule.4 < 0.4 %}
+                    <span class="text-warning">{{association_rule.4|x100}}%</span>
+                {% else %}
+                    <span class="text-danger">{{association_rule.4|x100}}%</span>
+                {% endif %}
+                的
+                {% if association_rule.1 == "溶解氧" %}
+                    {% if association_rule.2 == "Ⅲ类" %}
+                        <span class="text-success">Ⅲ类 </span>水质标准的数据中，仍然存在有
+                        <span class="text-info">{{association_rule.1}} </span>含量不足的现象
+                    {% elif association_rule.2 == "Ⅳ类" %}
+                        <span class="text-warning">Ⅳ类 </span>水质标准的数据中，存在有
+                        <span class="text-info">{{association_rule.1}} </span>含量不足的现象
+                    {% else %}
+                        <span class="text-danger">{{association_rule.2}} </span>水质标准的数据中，普遍存在有
+                        <span class="text-info">{{association_rule.1}} </span>含量不足的现象
+                    {% endif %}
+                {% else %}
+                    {% if association_rule.2 == "Ⅲ类" %}
+                        <span class="text-success">Ⅲ类 </span>水质标准的数据中，仍然存在有
+                        <span class="text-info">{{association_rule.1}} </span>含量超标的现象
+                    {% elif association_rule.2 == "Ⅳ类" %}
+                        <span class="text-warning">Ⅳ类 </span>水质标准的数据中，存在有
+                        <span class="text-info">{{association_rule.1}} </span>含量超标的现象
+                    {% else %}
+                        <span class="text-danger">{{association_rule.2}} </span>水质标准的数据中，普遍存在有
+                        <span class="text-info">{{association_rule.1}} </span>含量超标的现象
+                    {% endif %}
+                {% endif %}
+                ，
+                {% if association_rule.6 >= 0.4 %}
+                    且这种情况在当前标准的水质数据中的占比高达<span class="text-danger">{{association_rule.6|x100}}%</span>
+                {% elif association_rule.6 > 0.2 and association_rule.6 < 0.4 %}
+                    且这种情况在当前标准的水质数据中的占比为<span class="text-warning">{{association_rule.6|x100}}%</span>
+                {% else %}
+                    不过这种情况在当前标准的水质数据中的占比仅为<span class="text-success">{{association_rule.6|x100}}%</span>
+                {% endif %}
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳转</title>
+</head>
+<body>
+{% if check %}
+注册成功！<a href="registerView">点击</a>返回登录界面
+{% else %}
+<a href="registerView">注册失败，重新注册！</a>
+{% endif %}
+
+</body>
+</html>

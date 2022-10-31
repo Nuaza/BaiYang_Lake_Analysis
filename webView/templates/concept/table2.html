@@ -1,0 +1,32 @@
+<table class="table table-sm table-bordered table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">断面名称</th>
+        <th scope="col">日期</th>
+        <th scope="col">铅mg/L</th>
+        <th scope="col">氰化物mg/L</th>
+        <th scope="col">挥发酚mg/L</th>
+        <th scope="col">石油类mg/L</th>
+        <th scope="col">阴离子表面活性剂mg/L</th>
+        <th scope="col">硫化物mg/L</th>
+        <th scope="col">粪大肠菌群 个/L</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for data in original_data %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{data.3}}</td>
+                <td>{{data.4}}</td>
+                <td>{{data.22}}</td>
+                <td>{{data.23}}</td>
+                <td>{{data.24}}</td>
+                <td>{{data.25}}</td>
+                <td>{{data.26}}</td>
+                <td>{{data.27}}</td>
+                <td>{{data.28}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

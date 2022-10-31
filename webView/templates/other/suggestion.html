@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Bootstrap的CSS文件-->
+    <link rel="stylesheet" href="/static/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/static/images/icons/bootstrap.svg">
+    <title>白洋淀生态监测数据可视化系统</title>
+    <script src="/static/plugins/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+    <script src="/static/plugins/popper.js-1.16.1/dist/umd/popper.min.js"></script>
+    <script src="/static/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+    <style>
+        html, body{height: 100%;}
+        p{text-indent: 2em;}
+    </style>
+</head>
+<body>
+	{% load static %}
+    {% if not user %}
+    {% include "./../login.html" %}
+    {% else %}
+	<div class="container-fluid h-100">
+		{% include "./other_menu.html" %}
+		<div class="row h-100">
+            <!--左侧导航栏-->
+            <div class="col-2 mt-3 border-right">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">未来生态发展建议</a>
+                </div>
+            </div>
+            <!--右侧正文栏-->
+            <div class="col-10 pt-5 pl-5">
+                <!--正文内容-->
+                <div class="tab-content mr-5" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-success">对白洋淀未来的生态发展建议如下：</li>
+                            <li class="list-group-item list-group-item-action text-success">
+                                对于淀区内监测数据超标的区域，适度清理打捞水草，清理水体底部沉积的淤泥等杂质。
+                            </li>
+                            <li class="list-group-item list-group-item-action text-success">
+                                利用断面上游的可用水资源，对淀区进行适当补水操作，以改善水体动力，稀释水体，从而保障断面水体水质达到标准。
+                            </li>
+                            <li class="list-group-item list-group-item-action text-success">
+                                完善淀区生态监测功能，确保淀区生态保护管理员能够第一时间接收到准确的淀区水体监测数据，从而对其进行针对性的处理操作。
+                            </li>
+                            <li class="list-group-item list-group-item-action text-success">
+                                丰富淀区生态系统的生物多样性，通过筛选和配置具有本地适应性的植物，引入生态系统不同生态位的关键缺失物种，从而提升水体降解污染物的能力。
+                            </li>
+                        </ul>
+                        <p class="text-success mt-5">2017年，中共中央、国务院正式宣布，在河北省中部设立雄安新区，而白洋淀正是雄安新区的一个重要组成部分。
+                            做好白洋淀生态环境保护，恢复其“华北之肾”功能，是雄安新区打造新时代生态文明典范城市的重要环节。
+                        </p>
+                        <p class="text-success mt-3">2019年1月，正式颁布了《白洋淀生态环境治理和保护规划（2018-2035年）》，
+                            规划从流域治理角度出发，统筹考虑了水量、水质和生态三大要素，以白洋淀水质、水生态恢复目标为抓手，通过补水、治污、清淤和搬迁等措施进行综合治理，
+                            以求全面恢复白洋淀“华北之肾”的功能，使“华北明珠”再次绽放光彩。
+                        </p>
+                        <p class="text-success mt-3">我们相信，在党中央和雄安新区的统筹规划治理之下，白洋淀地区的生态环境将会得到极大改善，
+                            白洋淀生态未来的发展将会是一片光明！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+    {% endif %}
+</body>
+</html>

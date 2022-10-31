@@ -1,0 +1,16 @@
+<table class="table table-striped text-center table-bordered table-hover">
+    <thead class="thead-light">
+        <th scope="col">#</th>
+        <th scope="col">频繁项集</th>
+        <th scope="col">支持度</th>
+    </thead>
+    <tbody>
+        {% for frequent_item in frequent_itemsets %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ frequent_item.1 }}</td>
+                <td>{{ frequent_item.2 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

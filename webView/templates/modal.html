@@ -1,0 +1,44 @@
+<div class="modal fade" id="uploadFile" tabindex="-1" aria-labelledby="uploadFileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadFileLabel">上传数据</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form" action="" enctype="multipart/form-data" method="POST">
+                <div class="modal-body">
+                    <div class="form-group mb-2">
+                        <input class="form-control-file" type="file" id="file" name="file" accept=".xls, .xlsx" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="min_support">最小支持度</label>
+                        <input class="form-control w-50" type="text" id="min_support" name="min_support" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="algorithm">选择挖掘算法</label>
+                        <select class="form-control w-50" name="algorithm" id="algorithm">
+                            <option value="apriori" selected>Apriori算法</option>
+                            <option value="fpgrowth">FP-growth算法</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary" id="toast_btn" onclick="show_success()">提交</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function show_success(){
+        var file = document.getElementById("file").value;
+        var min_support = document.getElementById("min_support").value;
+        if (file != "" && min_support != ""){
+            alert("提交成功!");
+        }
+    }
+</script>
