@@ -1,5 +1,5 @@
 # 白洋淀检测数据关联分析系统的设计与实现
-## The design and construct of an association analysis system of BaiYang lake's monitor data
+## The design of an association analysis system of BaiYang lake's monitor data
 这是我的本科毕业设计，目前代码已开源，**但原始数据暂不开源**。
 ![alt title1](.title1.png)
 ![alt title2](.title2.png)
