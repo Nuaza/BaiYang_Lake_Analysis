@@ -1,12 +1,12 @@
 # 白洋淀检测数据关联分析系统的设计与实现
-## The design of an association analysis system of BaiYang lake's monitor data
-这是我的本科毕业设计，目前代码已开源，**但原始数据暂不开源**。
+## The design and implementation of Baiyang lake's monitoring data association analysis system
+这是我的本科毕业设计，目前代码已开源，**原始数据未开源**。
 ![alt title1](.title1.png)
 ![alt title2](.title2.png)
 ![alt title3](.title3.png)
 ![alt title4](.title4.png)
 ## 一、🚗运行环境说明🚗
-_本系统基于Python3.8语言编写，使用的包管理工具为pip，使用的编译器为PyCharm2022，使用的数据库为MySQL8.0_
+_本系统基于Python3.8语言编写，使用的数据库为MySQL8.0_
 
 #### 1、请先确认Python是否正确安装，以及Python版本是否为3.8及以上。
 在cmd里输入：`python --version` 
